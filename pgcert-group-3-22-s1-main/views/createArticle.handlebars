@@ -1,0 +1,19 @@
+<script src="./scripts/createArticle.js" defer></script>
+
+<br><br><br><br><br><br>
+{{#if message}}
+{{message}}
+{{/if}}
+<form action="./submitArticle" method="POST" enctype="multipart/form-data">
+
+    <label for="articleTitle">Article title: </label>
+    <input type="text" name="articleTitle" required><br><br>
+    <textarea id="createArticleTextArea" name="articleText" placeholder="Start writing your article here..."></textarea>
+    <br>
+    <label for="inpFile">Upload an image here!</label>
+    <br>
+    <input id="inpFile" type="file" name="imageFile" accept=".png,.jpg,.jpeg,.bmp,.gif">
+    <br><br>
+    <input class="button" type="submit" value="Post article" onclick="return createNotEmpty();">
+
+</form>

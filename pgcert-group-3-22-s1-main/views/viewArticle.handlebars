@@ -1,0 +1,135 @@
+<div class="viewArticles">
+    <div class="postIndividualArticle">
+        <div class="articleDisplay">
+            <h2>{{article.title}}</h2>
+            <h6>{{article.article_create_date}}</h6>
+            <p>{{{article.article}}}</p><br>
+            
+            <img src="./images/{{article.image}}">
+            
+        </div>
+
+        <div class="postComment">
+            {{#if user}}
+            <form action="./postComment?articleID={{article.article_id}}" method="POST">
+                <textarea name="commentText" placeholder="write your comment here.." cols="40" rows="2"></textarea>
+                <input class="button" type="submit" value="Post comment">
+            </form>
+            {{else}}
+            <p>Please login or signup to post comments</p>
+            {{/if}}
+        </div>
+
+        <button class="commentsShown button" id="hideAllComments" onclick="hideAllComments();">Hide all
+            comments</button>
+
+        <div class="comments">
+            {{#if comments}}
+            {{#each comments}}
+            <div class="comment{{comment_id}} parent{{parent_comment_id}} firstLayerComment">
+                <div class="userCommentInfo">{{username}} > {{comment_date}}</div>
+                <p class="commentContent" id="comment{{comment_id}}">{{comment}}</p>
+                {{#if ../user}}
+                {{#unless (commentDeleted comment)}}
+                <button class="replyButton button" id="replyButton{{comment_id}}"
+                    onclick="toggleReplyBox(`{{comment_id}}`);"><i class="fa-solid fa-reply"></i></button>
+                {{#if (checkOwnComment ../user.id username_id ../article.author_id)}}
+                <button class="deleteComment button" id="deleteComment{{comment_id}}"
+                    onclick="deleteComment(`{{comment_id}}`);"><i class="fa-solid fa-trash-can"></i></button>
+                {{/if}}
+                {{/unless}}
+                <div class="replyBoxContainer">
+                    <div class="replyBox" id="replyTo{{comment_id}}">
+                        <form action="./replyComment?articleID={{../article.article_id}}&parentID={{comment_id}}"
+                            method="POST" id="replyFormForComment{{comment_id}}">
+                            <textarea id="replyTextArea{{comment_id}}" name="replyText" cols="40" rows="2"
+                                placeholder="type comment here.."></textarea>
+                            <input class="button" type="submit" value="Post Reply">
+                        </form>
+                        <button class="button" onclick="cancelReply(`{{comment_id}}`);">Cancel</button>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+
+            {{#if childNodes}}
+            {{#each childNodes}}
+
+            <div class="comment{{comment_id}} parent{{parent_comment_id}} secondLayerComment">
+                <p class="userCommentInfo">{{username}} > {{comment_date}}</p>
+                <p class="commentContent" id="comment{{comment_id}}">{{comment}}</p>
+                {{#if ../../user}}
+                {{#unless (commentDeleted comment)}}
+                <button class=" replyButton button" id="replyButton{{comment_id}}"
+                    onclick="toggleReplyBox(`{{comment_id}}`);"><i class="fa-solid fa-reply"></i></button>
+                {{#if (checkOwnComment ../../user.id username_id ../../article.author_id)}}
+                <button class="deleteComment button" id="deleteComment{{comment_id}}"
+                    onclick="deleteComment(`{{comment_id}}`);"><i class="fa-solid fa-trash-can"></i></button>
+                {{/if}}
+                {{/unless}}
+                <div class="replyBoxContainer firstNestDiv">
+                    <div class="replyBox" id="replyTo{{comment_id}}">
+                        <form action="./replyComment?articleID={{../../article.article_id}}&parentID={{comment_id}}"
+                            method="POST" id="replyFormForComment{{comment_id}}">
+                            <textarea id="replyTextArea{{comment_id}}" name="replyText" cols="40" rows="2"
+                                placeholder="type comment here.."></textarea>
+                            <input class="button" type="submit" value="Post Reply">
+                        </form>
+                        <button class="button" onclick="cancelReply(`{{comment_id}}`);">Cancel</button>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+
+            {{#if childNodes}}
+            {{#each childNodes}}
+
+            <div class="comment{{comment_id}} parent{{parent_comment_id}} thirdLayerComment">
+                <p class="userCommentInfo">{{username}} > {{comment_date}}</p>
+                <p class="commentContent" id="comment{{comment_id}}">{{comment}}</p>
+                {{#unless (commentDeleted comment)}}
+                {{#if (checkOwnComment ../../../user.id username_id ../../../article.author_id)}}
+                <button class="deleteComment button" id="deleteComment{{comment_id}}"
+                    onclick="deleteComment(`{{comment_id}}`);"><i class="fa-solid fa-trash-can"></i></button>
+                {{/if}}
+                {{/unless}}
+            </div>
+            {{/each}}
+            {{/if}}
+
+
+            {{/each}}
+            {{/if}}
+
+            {{/each}}
+            {{/if}}
+        </div>
+
+    </div>
+    <div class="displayAuthorBox">
+        <div>
+            <h2 id="author">Author:</h2>
+        </div>
+        <div class="authorName">
+            <h3><a href="./visitProfile?id={{article.author_id}}">{{article.author}}</a></h3>
+        </div>
+        <div class="subscribe">
+            {{#if user}}
+            {{#unless (checkIfUserIsAuthor user.id article.author_id)}}
+            {{#if subscriber}}
+            <div>
+                <button class="unsubscribeButton button"
+                    onclick="unsubscribe({{user.id}}, {{article.author_id}})">Unsubscribe</button>
+            </div>
+
+            {{else}}
+            <div>
+                <button class="subscribeButton button"
+                    onclick="subscribe({{user.id}}, {{article.author_id}});">Subscribe</button>
+            </div>
+            {{/if}}
+            {{/unless}}
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<script src="./scripts/createArticle.js" defer></script>
+
+<br><br><br><br><br><br>
+{{#if message}}
+{{message}}
+{{/if}}
+<form action="./editArticle?id={{article.article_id}}" method="POST" enctype="multipart/form-data">
+
+    <label for="articleTitle">Article title: </label>
+    <input type="text" name="articleTitle" value="{{article.title}}" required><br><br>
+    <textarea id="editArticleTextArea" name="articleText">{{article.article}}</textarea>
+    <br>
+    
+    <img id="editArticleImage" src="./images/thumbnails/{{article.image}}">
+
+    <br>
+    <button id="removeImageButton" type="button" onclick="removeImage({{article.article_id}});">Click here to remove image</button>
+    <br><br><br>
+
+    <label for="inpFile">Change image here!</label>
+    <br>
+    <input id="inpFile" type="file" name="imageFile" accept=".png,.jpg,.jpeg,.bmp,.gif">
+
+    <br><br><br>
+    <input type="submit" value="Edit article" onclick="return editNotEmpty();">
+</form>
+

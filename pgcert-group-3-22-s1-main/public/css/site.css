@@ -1,0 +1,550 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Add a gray background color with some padding */
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #E9E1F1;
+    /* background-image: linear-gradient(rgb(152, 152, 229), rgb(171, 112, 234), rgb(110, 155, 233)); */
+
+
+}
+
+
+/* Left column */
+#leftColumn {
+    grid-area: l;
+    /* width: 100%; */
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+}
+
+#articleImage {
+    max-width: 100%;
+}
+
+#myHeading:hover {
+    transform: scale(1.0);
+    display: block;
+    background: rgb(209, 228, 234);
+
+}
+
+
+.articleTitle:hover {
+    transform: scale(0.9);
+    display: block;
+    background: rgb(209, 228, 234);
+}
+
+/* Right column */
+#rightColumn {
+    grid-area: r;
+    margin-top: 20px;
+    display: block;
+    padding: 1em;
+    width: 500px;
+    justify-self: center;
+
+}
+
+#myArticleTitle {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    color: #956EF3;
+    font-size: 50px;
+
+}
+
+
+/* Fake image */
+.fakeimg {
+    display: block;
+    padding: 20px;
+}
+
+.articleTitle {
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+.articleDate {
+    display: block;
+}
+
+/* Add a card effect for articles */
+.card {
+
+    background-color: #E4F0FB;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 40px -12px inset, rgba(50, 50, 93, 0.25) 0px 18px 36px -18px inset;
+    border-radius: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+
+}
+
+
+/* for the grid */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 4fr auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        ". l r .";
+
+}
+
+/* footer */
+.footer {
+    color: #E4F0FB;
+    padding: 1em;
+    margin-top: 10px;
+    background: rgb(50, 61, 97);
+    text-align: center;
+
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media only screen and (max-width: 1000px) {
+    .row {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "l"
+            "r";
+    }
+
+
+}
+
+.header h2 {
+
+    position: absolute;
+    margin-bottom: 100px;
+    top: 3%;
+    left: 50%;
+    font-size: 60px;
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+
+/* Navbar */
+#navbarUL,
+.navbar {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(50, 61, 97);
+    top: 0;
+
+}
+
+#homeNavbar,
+#navbarAvatar,
+#loginNavbar,
+#notificationBell {
+    float: right !important;
+    border-right: 1px solid #bbb;
+}
+
+#notificationBell {
+    padding: 7px;
+    padding-right: 13px;
+}
+
+.fa-bell {
+    color: white;
+}
+
+.notificationsList {
+
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    right: 0;
+    top: 74px;
+    margin-right: 151px;
+}
+
+.notificationsList a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+
+}
+
+.notificationAndDate {
+    display: flex;
+    flex-direction: column;
+}
+
+.notificationAndDate p {
+    margin: 5px;
+}
+
+.notificationsDropdown:hover .notificationsList {
+    display: block;
+}
+
+.notificationDetails {
+    display: flex;
+    flex-direction: row;
+    max-width: 300px;
+    align-items: center;
+}
+
+.notificationDetails>* {
+    margin: 2px;
+    margin-right: 7px;
+}
+
+.unreadIcon {
+    position: absolute;
+    right: 0px;
+    color: rgb(50, 61, 97);
+}
+
+#unreadNotificationCount {
+    width: 18px;
+    text-align: center;
+    position: absolute;
+    right: 155px;
+    top: 12px;
+    z-index: 999;
+    font-weight: bolder;
+    color: white;
+    border: 1px solid rgba(255, 103, 103, 0.603);
+    border-radius: 99px;
+    background-color: rgba(255, 103, 103, 0.603);
+}
+
+#logoImage,
+#siteTitle {
+    float: left;
+}
+
+#navbarUL>li>a,
+#navbarUL>li>p {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0;
+
+}
+
+#navbarUL>li>img {
+    display: block;
+    margin: 0;
+}
+
+#navbarUL a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#userAccountDropdown {
+    float: right !important;
+    margin: 0;
+    height: 46px;
+}
+
+#userAccountOptions {
+
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    right: 0;
+    top: 74px;
+    margin-right: 28px;
+}
+
+#userAccountOptions a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+
+}
+
+#userAccountDropdown:hover #userAccountOptions {
+    display: block;
+}
+
+/* account creation avatar dropdown menu */
+.dropdown {
+    position: relative
+}
+
+.dropdown .field {
+
+    width: 200px;
+    background: white;
+    color: black;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border: solid 1px black;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+}
+
+.dropdown .field:hover {
+    border: solid 1px #fff;
+    box-shadow: 0 0 5px #999
+}
+
+.dropdown>ul.list {
+
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 999;
+    width: 200px;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    background: #fff;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #999
+}
+
+.dropdown>ul.list li {
+    padding: 10px;
+    border-bottom: solid 1px #ccc;
+}
+
+.dropdown>ul.list li:hover {
+    background: #EC6603;
+    color: #fff;
+}
+
+.dropdown>ul.list li:last-child {
+    border: none
+}
+
+#displayAvatarChoice {
+    display: non;
+}
+
+button i {
+    transition: .3s all ease;
+}
+
+.btn_up.clicked,
+.btn_up:hover i {
+    color: #db6149;
+}
+
+.btn_down.clicked,
+.btn_down:hover i {
+    color: #567a46;
+}
+
+.fa-thumbs-up:before {
+
+    display: flex;
+    margin-left: 4px;
+    margin-bottom: 3px;
+
+
+}
+
+.fa-thumbs-down:before {
+    display: flex;
+    margin-left: 4px;
+}
+
+.blur {
+    filter: blur(8px);
+}
+
+.replyBox {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.secondLayerComment {
+    margin-left: 50px;
+}
+
+.thirdLayerComment {
+    margin-left: 100px;
+}
+
+.firstLayerComment,
+.secondLayerComment,
+.thirdLayerComment {
+    margin-top: 10px;
+}
+
+.userCommentInfo {
+    font-weight: bold;
+}
+
+#navbarUL h2 {
+    position: absolute;
+    font-size: 50px;
+    left: 10%;
+    top: -18px;
+
+}
+
+#headerImage {
+    width: 100px;
+}
+
+.logo1 {
+
+    color: transparent !important;
+    -webkit-text-stroke: 2.5px #8A95D2;
+}
+
+.logo2 {
+    color: #E5EBFD !important;
+    animation: animate 10s ease-in-out infinite;
+
+}
+
+.likeSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sortArticles {
+    padding-top: 20px;
+}
+
+@keyframes animate {
+
+    0%,
+    100% {
+        clip-path: polygon(0% 45%,
+                16% 44%,
+                33% 50%,
+                54% 60%,
+                70% 61%,
+                84% 59%,
+                100% 52%,
+                100% 100%,
+                0% 100%);
+    }
+
+    50% {
+        clip-path: polygon(0% 60%,
+                15% 65%,
+                34% 66%,
+                51% 62%,
+                67% 50%,
+                84% 45%,
+                100% 46%,
+                100% 100%,
+                0% 100%);
+    }
+
+}
+
+.subscribeContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: ". left right .";
+    margin-top: 100px;
+}
+
+.subscribedTo {
+    grid-area: left;
+}
+
+.subscribers {
+    grid-area: right;
+}
+
+.subscribeContainer h1 {
+    text-align: center;
+}
+
+
+
+.subscribedProfile,
+.subscriberProfile {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.avatar,
+.username {
+    margin: 5px;
+}
+
+
+/* for the my articles text style: */
+
+@import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
+
+#myArticleTitle {
+    font-size: 50px;
+    /* line-height: 90px; */
+    position: relative;
+    /* left:-19%; */
+    top: -10%;
+    /* text-shadow: 0 0 5px #956EF3, 0 0 15px #956EF3, 0 0 20px #956EF3, 0 0 40px #CFD8F4, 0 0 60px #B69AE4, 0 0 10px #956EF3, 0 0 98px #9C9AE4; */
+    color: #5c6bc0;
+    /* font-family: "Sacramento", cursive; */
+    background-color: #eee6fd;
+    /* padding: 20px; */
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 40px -12px inset, rgba(50, 50, 93, 0.25) 0px 18px 36px -18px inset; */
+    border-radius: 30px;
+
+}
+
+.RCP {
+    border-radius: 30px;
+}

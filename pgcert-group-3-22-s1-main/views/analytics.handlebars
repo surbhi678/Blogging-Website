@@ -1,0 +1,68 @@
+<script src="./scripts/histogram.js" defer></script>
+
+{{!-- for the histogram --}}
+<script src='https://cdn.plot.ly/plotly-2.12.1.min.js'></script>
+
+<div class="analyticsgrid">
+    <div id="dashboard">
+        <header>
+
+            <h2 id="dashboardHeading">Dashboard</h2>
+
+        </header>
+        <div id="analyticsDisplayContainer">
+            <div class="analyticsboard">
+                <p>Total Number Of Followers:</p>
+                <p>{{totalSubscribers}}</p>
+
+            </div>
+            <div class="analyticsboard">
+                <p>Total Number Of Comments:</p>
+                <p>{{thisArticleTotalComments}}</p>
+            </div>
+            <div class="analyticsboard">
+                <p>Total Number Of Likes:</p>
+                <p>{{totalLikesForUser}}</p>
+            </div>
+        </div>
+    </div>
+    <div id="chartContainer">
+
+        <h1>Histogram depicting the total comments per Day:</h1>
+        <canvas id="histogram" data-user-id="user{{user.id}}" width="200" height="50">
+
+        </canvas>
+    </div>
+
+    <div id="popularposts">
+
+        {{#each topThreeArticle}}
+        <div class="posts">
+            <h1>Rank: {{this.rank}}</h1>
+            <h3 class="pTitle">{{this.title}}</h3>
+
+            <img src="./images/thumbnails/{{this.image}}">
+           
+            <p class="pTime">Date: {{this.article_create_date}}</p>
+            <table id="popularityTable">
+                <thead>
+                    <tr>
+                        <td><b>Popularity</b></td>
+                        <td><b>Total comments</b></td>
+                        <td><b>Likes</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{this.popularity}}</td>
+                        <td>{{this.number_of_comments}}</td>
+                        <td>{{this.number_of_likes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        {{/each}}
+
+    </div>
+</div>

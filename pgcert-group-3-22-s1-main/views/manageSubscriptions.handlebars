@@ -1,0 +1,40 @@
+<div class="subscribeContainer">
+    <div class="subscribedTo">
+        <h1>People you are subscribed to</h1>
+        {{#if subscribedList}}
+        {{#each subscribedList}}
+        <div class="subscribedProfile" id="unsubscribe{{this.id}}">
+            <img class="avatar" src="./images/{{avatar}}.png" height="40px">
+            <h3 class="username"><a href="./visitProfile?id={{id}}">{{username}}</a></h3>
+            
+            <button class="button"
+                    onclick="manageSubscribersUnsubscribe({{../user.id}}, {{this.id}})">Unsubscribe</button>
+               
+        </div>
+        
+        
+        {{else}}
+        <p>You haven't subscribed to anyone yet!</p>
+        {{/each}}
+        {{/if}}
+    </div>
+
+    <div class="subscribers">
+        <h1>People subscribed to you</h1>
+        {{#if subscribers}}
+        {{#each subscribers}}
+        <div class="subscriberProfile" id="remove{{this.id}}">
+            <img class="avatar" src="./images/{{avatar}}.png" height="40px">
+            <h3 class="username"><a href="./visitProfile?id={{id}}">{{username}}</a></h3>
+
+            <button class="button" 
+                    onclick="manageSubscriberRemove({{this.id}}, {{../user.id}})">Remove Subscriber</button>
+
+        </div>
+         
+        {{else}}
+        <p>No one has subscribed to you yet...</p>
+        {{/each}}
+        {{/if}}
+    </div>
+</div>

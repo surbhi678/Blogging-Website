@@ -1,0 +1,57 @@
+<div class="visitProfileContainer">
+    <div class="displayAuthorBox">
+        <div>
+            <h2 id="author">Author:</h2>
+        </div>
+
+        <div class="profileAvatar">
+            <img class="profileAvatar" src="./images/{{profile.avatar}}.png" width="35px" height="35px">
+        </div>
+        <div class="authorName">
+            <h3>{{profile.username}}</h3>
+        </div>
+
+        <div class="subscribe">
+            {{#if user}}
+            {{#unless (checkIfUserIsAuthor user.id profile.id)}}
+            {{#if subscriber}}
+            <div>
+                <button class="unsubscribeButton button"
+                    onclick="unsubscribe({{user.id}}, {{profile.id}})">Unsubscribe</button>
+            </div>
+            
+            {{else}}
+            <div>
+                <button class="subscribeButton button"
+                    onclick="subscribe({{user.id}}, {{profile.id}});">Subscribe</button>
+                </div>
+            
+            {{/if}}
+            {{/unless}}
+            {{/if}}
+        </div>
+
+    </div>
+
+    <div class="displayArticles">
+    {{#each articles}}
+    <div class="card">
+      <h2 class="articleTitle"><a href="./visitArticle?id={{this.article_id}}">{{this.title}}</a></h2>
+      <h5 class="articleDate">{{this.article_create_date}}</h5>
+      
+      <div class="likeSection">
+        <p id="likesFor{{this.article_id}}">{{this.number_of_likes}}</p>
+        {{#if liked}}
+        <i class="likeButton fa-solid fa-thumbs-up" data-liked="false{{this.article_id}}"
+          onclick="updateLike({{this.article_id}}, {{../user.id}});"></i>
+        {{else}}
+        <i class="alreadyLike fa-solid fa-thumbs-down" data-liked="true{{this.article_id}}"
+          onclick="updateLike({{this.article_id}}, {{../user.id}});"></i>
+        {{/if}}
+      </div>
+
+    </div>
+    {{/each}}
+
+  </div>
+</div>

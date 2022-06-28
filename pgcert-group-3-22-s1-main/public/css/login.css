@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
+
+.loginPopupContainer #loginPopup {
+  visibility: hidden;
+  z-index: 1;
+  margin: 0;
+  top: 90px;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: rgb(50, 61, 97);
+  border-radius: 9px;
+  border-top: 10px solid #79a6fe;
+  border-bottom: 10px solid #8BD17C;
+  width: 400px;
+  height: 550px;
+  box-shadow: 1px 1px 108.8px 19.2px rgb(25, 31, 53);
+}
+
+.loginPopupContainer .show {
+  visibility: visible !important;
+  animation: fadeIn 1s;
+}
+
+#loginPopup>h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #5c6bc0;
+  font-size: 50px;
+  margin-top: 94px;
+}
+
+#loginPopup>h1 span {
+  color: #dfdeee;
+  font-weight: lighter;
+}
+
+#loginPopup>h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  color: #a1a4ad;
+  letter-spacing: 1.5px;
+  margin-top: -15px;
+  margin-bottom: 70px;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+  display: block;
+  margin: 20px auto;
+  background: #262e49;
+  border: 0;
+  border-radius: 5px;
+  padding: 14px 10px;
+  width: 320px;
+  outline: none;
+  color: #d6d6d6;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -ms-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+#closeLoginButton {
+  position: absolute;
+  right: 0;
+}
+
+::-webkit-input-placeholder {
+  color: #565f79;
+}
+
+.loginForm input[type="text"]:focus,
+.loginForm input[type="password"]:focus {
+  border: 1px solid #79A6FE;
+}
+
+
+#signin-button {
+  border: 0;
+  background: #7f5feb;
+  color: #dfdeee;
+  border-radius: 100px;
+  width: 250px;
+  height: 49px;
+  font-size: 19px;
+  position: absolute;
+  top: 85%;
+  left: 20%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#signin-button:hover {
+  background: #5d33e6;
+}
+
+#SignupLink {
+  color: #dfdeee;
+  top: 89%;
+  left: 23%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

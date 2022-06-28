@@ -1,0 +1,157 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+ }
+  
+ .posts>h1{
+    color:rgb(50, 61, 97);
+    background-color: rgb(204, 174, 235,0.5);
+    
+    border-radius: 30px;
+    text-align: center;
+ }
+  
+ .posts>h1,.posts>h2{
+    text-align: center;
+ }
+  
+ #dashboardHeading{
+    left: 23%;
+    top: 5%;
+    position: absolute;
+    font-size: 72px;
+    background: -webkit-linear-gradient(rgb(159, 206, 233), #23365F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+ }
+
+
+  
+#popularityTable{
+    padding: auto;
+    margin-left: 10px;
+    align-self: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgba(214, 195, 239, 0.5);
+    
+}
+#popularityTable td{
+
+   padding: 5px 20px 10px 20px;
+}
+  
+#chartContainer{
+    width: 80%;
+    height: 80%;
+    align-items: center;
+    align-self: center;    
+}
+#chartContainer h1{
+   background: -webkit-linear-gradient(rgb(159, 206, 233), #23365F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.posts{
+    /* background-color: #E4F0FB; */
+    border-radius: 30px;
+}
+
+.analyticsboard{
+   /* text-align: center;
+   margin: 10px;
+   border-radius: 5px;
+   border: 1px solid white;
+   background-color: rgb(187, 224, 246); */
+   background-color: #E4F0FB;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 40px -12px inset, rgba(50, 50, 93, 0.25) 0px 18px 36px -18px inset;
+    border-radius: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+   
+ }
+
+
+ .analyticsboard:hover{
+    transform: scale(1.5);
+    display: block;
+    background: #E5EAF6;
+  }
+
+ #analyticsDisplayContainer{
+    position: relative;
+    left: -14%;
+    top: 10%;
+
+    /* padding: -30px; */
+    margin: 60px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  
+ }
+ #dashboard{
+    margin-left: 10%;
+    margin-top: 5%;
+    grid-area: d;
+ }
+ #chartContainer{
+    position: relative;
+
+    top: -40%;
+    margin-left: 5%;
+    margin-bottom: 5px;
+    grid-area: h;
+ }
+
+
+ #popularposts{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-image: url("https://i.gifer.com/6ob.gif");
+    display: block;
+    grid-area: p;
+
+
+}
+.analyticsgrid{
+    display: grid;
+    grid-template-columns:1fr 8fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      ". d p"
+      ". h p"
+      ;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the  columns stack on top of each other instead of next to each other */
+
+ @media only screen and (max-width: 1000px) {
+
+    .analyticsgrid {
+
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+        "d"
+        "h"
+        "p";
+    }
+
+    #chartContainer{
+      position: relative;
+  
+      top: -20%;
+      margin-left: 5%;
+      margin-bottom: 5px;
+      grid-area: h;
+   }
+
+
+} 
+ 

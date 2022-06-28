@@ -1,0 +1,72 @@
+<body>
+
+  <div class="container">
+
+    {{!-- Sort articles --}}
+    <div class="sortArticles">
+      <label for="sortArticles">Sort By: </label>
+      <select name="sortArticlesList" id="sort-articles" onchange="sortArticle({{user.id}});">
+        <option value=""> </option>
+        <option value="articleTitle">Article Title</option>
+        <option value="username">Username</option>
+        <option value="date">Date</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="row">
+    {{!-- Article column --}}
+    <div id="leftColumn">
+
+      {{#each allArticles}}
+
+      <div class="card leftCard">
+        <h2 class="articleTitle"><a class="articleTitle" href="./visitArticle?id={{this.article_id}}">{{this.title}}</a>
+        </h2>
+        <h5 class="articleDate">{{this.article_create_date}}</h5>
+        <div class="fakeimg">
+          <img src="./images/{{this.image}}">
+
+          <p class="articleText">{{{this.article}}}</p>
+          <h5>Author: {{this.author}}</h5>
+
+        </div>
+
+        <div class="likeSection">
+          <p id="likesFor{{this.article_id}}">{{this.number_of_likes}}</p>
+          {{#if liked}}
+          <i class="likeButton fa-solid fa-thumbs-up" data-liked="false{{this.article_id}}"
+            onclick="updateLike({{this.article_id}}, {{../user.id}});"></i>
+          {{else}}
+          <i class="alreadyLike fa-solid fa-thumbs-down" data-liked="true{{this.article_id}}"
+            onclick="updateLike({{this.article_id}}, {{../user.id}});"></i>
+          {{/if}}
+        </div>
+
+      </div>
+      {{/each}}
+
+    </div>
+
+    {{#if user}}
+    <div id="rightColumn">
+      <div>
+        <div id="myArticleTitle">My articles</div>
+        {{#each allUserArticles}}
+        <div class="card myArticleCard">
+          <h2 id="myHeading"><a href="./visitArticle?id={{this.article_id}}">{{this.title}}</a></h2>
+          <p>{{{this.article}}}</p>
+          <p>Likes: {{this.number_of_likes}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+
+  </div>
+</body>
+
+<div class="footer">
+  <h2>Created By Group 3: Callum, Seo Joon Yoon, Surbhi, Wenting</h2>
+</div>
